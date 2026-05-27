@@ -17,6 +17,9 @@ This guide uses rsyslog's built-in `omprog` module to pipe each raw message to a
 
 Validated with Ubuntu `24.04.4 LTS`, rsyslog `8.2312.0`, inbound syslog UDP/TCP `514`, SDL HEC raw ingest such as `https://ingest.us1.sentinelone.net/services/collector/raw?sourcetype=syslog`, and SDL query API such as `https://xdr.us1.sentinelone.net/api/query`.
 
+> [!NOTE]
+> This guide uses the HEC `/raw` endpoint because rsyslog already provides each syslog record as raw text. The HEC `/event` endpoint is also usable, but it has a different payload shape: instead of posting the syslog line as `text/plain`, wrap it as JSON, for example `{"event":"<raw syslog message>"}`, and send `Content-Type: application/json`.
+
 Your SDL region may use different hostnames. Use the ingest and query/API hostnames from your SentinelOne tenant.
 
 ## Prerequisites
